@@ -37,8 +37,11 @@ fetch(peopleUrl)
     let profiles = data.results;
     console.log(profiles);
     generateHTML(profiles);
+    userClick(profiles);
     })
+    // .catch(error => {
 
+    // })
  
 /**
  * Generates HTML for each employee card by mapping over profiles array; inserts cards in gallery div
@@ -60,6 +63,20 @@ function generateHTML(arr) {
 
     gallery.insertAdjacentHTML('beforeend', staffMember)
     })
+};
+
+/**
+ * Selects all HTML elements with the class .card and adds a click event listener
+ * @param   {array}     arr - array of employee objects
+ */
+function userClick(arr) {
+    const card = document.querySelectorAll('.card');
+    for (let i = 0; i < arr.length; i++) {
+        card[i].addEventListener('click', (e) => {
+        console.log(e.target);
+        console.log('Clicked!');
+        });
+    }
 };
 
 
