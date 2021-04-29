@@ -18,7 +18,7 @@
  */
 
 
-const peopleUrl = 'https://randomuser.me/api/?results=12';
+const peopleUrl = 'https://randomuser.me/api/?nat=us&results=12';
 const peopleDiv = document.getElementById('gallery');
 
 //Call to fetch, passing it the url of the API we want to access
