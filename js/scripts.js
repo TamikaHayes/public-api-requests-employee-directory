@@ -1,5 +1,5 @@
 /**
- * Treerhouse FSJS Techdegree
+ * Treehouse FSJS Techdegree
  * Project 5 - Public API Requests
  * Tamika Hayes
  * April 28, 2021
@@ -20,7 +20,8 @@
 
 const peopleUrl = 'https://randomuser.me/api/?exc=login&nat=us&results=12';
 const peopleDiv = document.querySelector('gallery');
-let modal = document.querySelector('.modal');
+let modal = "";
+
 
 //Call to fetch, passing it the url of the data source (Random User API)
     //fetch will return a Promise and a Response object containing status code/message
@@ -66,6 +67,7 @@ function generateHTML(arr) {
 
     gallery.insertAdjacentHTML('beforeend', staffMember);
     })
+
 };
 
 /**
@@ -91,7 +93,19 @@ function generateModal(person) {
 
     console.log(modal);
     gallery.insertAdjacentHTML('beforeend', modal);
+
 }
+
+function closeModal(arr) {
+    const modalElement = document.querySelector('.modal');
+    const closeButton = document.querySelector('.modal-close-btn');
+    console.log(closeButton);
+    closeButton.addEventListener('click', (e) => {
+        console.log('Clicked!');
+        modalElement.remove();
+    });
+}
+
 
 /**
  * Selects all HTML elements with the class .card and adds a click event listener
@@ -101,12 +115,15 @@ function userClick(arr) {
     const card = document.querySelectorAll('.card');
     for (let i = 0; i < arr.length; i++) {
         card[i].addEventListener('click', (e) => {
-        console.log(e.target);
-        console.log('Clicked!');
-        generateModal(arr[i]);
+            console.log(e.target);
+            console.log('Clicked!');
+            generateModal(arr[i]);
+            closeModal(arr[i]);
         });
     }
 };
+
+
 
 
 
