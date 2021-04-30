@@ -22,7 +22,9 @@ const peopleUrl = 'https://randomuser.me/api/?exc=login&nat=us&results=12';
 const peopleDiv = document.querySelector('gallery');
 let modal = "";
 
-
+/**
+ * Version of fetch request with catch for HTTP errors
+ */
 
 // function handleErrors(response) {
 //     if (!response.ok) throw new Error (response.error);
@@ -95,7 +97,7 @@ function generateModal(person) {
         </div>
     </div>`;
 
-    console.log(modal);
+    //console.log(modal);
     gallery.insertAdjacentHTML('beforeend', modal);
 
 }
@@ -108,9 +110,9 @@ function generateModal(person) {
 function closeModal(arr) {
     const modalElement = document.querySelector('.modal');
     const closeButton = document.querySelector('.modal-close-btn');
-    console.log(closeButton);
+    //console.log(closeButton);
     closeButton.addEventListener('click', (e) => {
-        console.log('Clicked!');
+        //console.log('Clicked!');
         modalElement.remove();
     });
 }
@@ -124,8 +126,8 @@ function userClick(arr) {
     const card = document.querySelectorAll('.card');
     for (let i = 0; i < arr.length; i++) {
         card[i].addEventListener('click', (e) => {
-            console.log(e.target);
-            console.log('Clicked!');
+            //console.log(e.target);
+            //console.log('Clicked!');
             generateModal(arr[i]);
             closeModal(arr[i]);
         });
