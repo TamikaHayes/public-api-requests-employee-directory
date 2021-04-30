@@ -23,30 +23,34 @@ const peopleDiv = document.querySelector('gallery');
 let modal = "";
 
 
-//Call to fetch, passing it the url of the data source (Random User API)
-    //fetch will return a Promise and a Response object containing status code/message
-//parse Response data to JSON using .then
-    //response.json will read the response and return a Promise that resolves to JSON
-//Once the Promise is resolved, store the Promise (response data results) in the variable 'profiles'
-//console.log (profiles) ---> yields an array of 12 employee objects
-//Call function to generate HTML that displays employee cards
-//Call function to listen for user clicks on employee cards
-//Call function to generate a modal/pop-up when user click is detected
-//add catch() method for errors (check status code of request)
 
+// function handleErrors(response) {
+//     if (!response.ok) throw new Error (response.error);
+//     return response;
+// }
+
+// fetch(peopleUrl)
+//     .then( response => response.json() )
+//     .then(handleErrors)
+//     .then(data => {
+//     let profiles = data.results;
+//     console.log(profiles);
+//     generateHTML(profiles);
+//     userClick(profiles);
+//     })
+//     .catch(error => {
+//         gallery.insertAdjacentHTML('beforeEnd', 'Something went wrong. Please try again later.');
+//     });
 
 fetch(peopleUrl)
     .then( response => response.json() )
     .then(data => {
     let profiles = data.results;
-    console.log(profiles);
+    //console.log(profiles);
     generateHTML(profiles);
     userClick(profiles);
     })
-    // .catch(error => {
 
-    // })
- 
 /**
  * Generates HTML for each employee card by mapping over profiles array; inserts cards in gallery div
  * @param   {array}     arr - array of employee objects
@@ -95,6 +99,11 @@ function generateModal(person) {
     gallery.insertAdjacentHTML('beforeend', modal);
 
 }
+
+/**
+ * Closes modal when user clicks the "close button" in the modal's upper right corner
+ * @param   {array}     arr - array of employee objects
+ */
 
 function closeModal(arr) {
     const modalElement = document.querySelector('.modal');
