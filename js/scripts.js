@@ -108,7 +108,7 @@ function generateModal(person) {
  */
 
 function closeModal(arr) {
-    const modalElement = document.querySelector('.modal');
+    const modalElement = document.querySelector('.modal-container');
     const closeButton = document.querySelector('.modal-close-btn');
     //console.log(closeButton);
     closeButton.addEventListener('click', (e) => {
